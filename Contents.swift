@@ -413,3 +413,34 @@ do {
 }
 
 
+func makeArray(size: Int, using generator:()->Int) -> [Int]{
+    var numbers = [Int]()
+    
+    for _ in 0..<size{
+        let newNumber = generator()
+        numbers.append(newNumber)
+    }
+    
+    return numbers
+}
+
+func generateNumber()->Int{
+    Int.random(in: 1...20)
+}
+
+let newRolls = makeArray(size: 50,using:generateNumber )
+
+print(newRolls)
+
+
+// EXERCISE 5
+let luckyNumbers = [7, 4, 38, 21, 16, 15, 12, 33, 31, 49]
+let oddNumbers = luckyNumbers.filter{(num) in return num % 2 != 0}
+let ascendingNumbers = oddNumbers.sorted { (num1, num2) in
+    return num1 < num2
+}
+
+print(ascendingNumbers)
+for number in ascendingNumbers {
+    print("\(number) is a lucky number")
+}
